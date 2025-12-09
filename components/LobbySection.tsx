@@ -49,7 +49,7 @@ export const LobbySection: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    className="mb-16 md:mb-24 text-right"
+                    className="mb-16 md:mb-24 text-left"
                 >
                     <span className="font-inter text-xs text-oldBronze uppercase tracking-[0.3em] block mb-6">
                         Входная Группа
@@ -78,10 +78,10 @@ export const LobbySection: React.FC = () => {
                             loading="lazy"
                         />
                         {/* Затемнение для текста */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-charcoalOak/80 via-charcoalOak/30 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-charcoalOak/90 via-charcoalOak/40 to-transparent" />
 
                         {/* Текст поверх изображения */}
-                        <div className="absolute inset-0 flex items-center">
+                        <div className="absolute inset-0 flex items-center md:items-center justify-start">
                             <div className="px-8 md:px-16 lg:px-24 max-w-2xl">
                                 <motion.h3
                                     initial={{ opacity: 0, x: -30 }}

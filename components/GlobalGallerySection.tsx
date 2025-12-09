@@ -87,7 +87,7 @@ export const GlobalGallerySection: React.FC = () => {
             <div ref={containerRef} className="container mx-auto px-6 md:px-12 lg:px-24">
 
                 {/* Заголовок и фильтры */}
-                <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
                     <div>
                         <span className="font-inter text-xs text-oldBronze uppercase tracking-[0.3em] block mb-6">
                             Визуализация
