@@ -106,7 +106,7 @@ export const ArchitectureSection: React.FC = () => {
                 Для production нужно заменить на реальное фото фасада!
               */}
                             <img
-                                src="https://images.unsplash.com/photo-1555636222-cae831e670b3?q=80&w=800&auto=format&fit=crop"
+                                src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1577495508048-b635879837f1?q=75&w=800&output=webp&il&fit=crop"
                                 alt="Исторический фасад Левшинский 19"
                                 className="w-full h-full object-cover"
                                 loading="lazy"

@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
         className="absolute inset-0"
       >
         <img
-          src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+          src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&w=1600&output=webp&il&fit=crop"
           alt="Luxury Abstract Texture"
           className="w-full h-full object-cover opacity-90"
         />

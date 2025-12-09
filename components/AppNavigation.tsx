@@ -44,6 +44,16 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isManagerMode, tog
     setIsMobileMenuOpen(false);
   };
 
+  // Блокировка скролла при открытом меню
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
       <motion.nav
@@ -51,7 +61,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isManagerMode, tog
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-8 py-4 md:py-6 flex justify-between items-center transition-colors duration-300 ${isScrolled
-          ? 'bg-charcoalOak/95 backdrop-blur-md shadow-lg border-b border-white/5'
+          ? 'bg-[#1A1816]/95 backdrop-blur-md shadow-lg border-b border-white/5'
           : 'bg-transparent'
           }`}
       >
@@ -111,7 +121,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isManagerMode, tog
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-charcoalOak/98 backdrop-blur-lg flex flex-col justify-center items-center lg:hidden"
+            className="fixed inset-0 z-40 bg-[#1A1816] flex flex-col justify-center items-center lg:hidden"
           >
             <nav className="flex flex-col items-center gap-6">
               {menuItems.map((item, index) => (

@@ -50,7 +50,7 @@ export const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment, onClick
             alt={`Лот ${apartment.number}`}
             className="w-full h-full object-cover grayscale-[10%]"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = 'https://wsrv.nl/?url=https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200';
+              (e.target as HTMLImageElement).src = 'https://wsrv.nl/?url=https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=75&output=webp&il';
             }}
           />
 

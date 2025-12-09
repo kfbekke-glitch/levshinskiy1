@@ -20,49 +20,49 @@ import { Maximize2, ArrowRight } from 'lucide-react';
 const galleryImages = [
     {
         id: 1,
-        url: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?q=75&output=webp&il&w=1200',
         category: 'Архитектура',
         title: 'Фасад здания'
     },
     {
         id: 2,
-        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=75&output=webp&il&w=1200',
         category: 'Лобби',
         title: 'Парадный холл'
     },
     {
         id: 3,
-        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=75&output=webp&il&w=1200',
         category: 'Интерьеры',
         title: 'Гостиная пентхауса'
     },
     {
         id: 4,
-        url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=75&output=webp&il&w=1200',
         category: 'Архитектура',
         title: 'Вечерняя подсветка'
     },
     {
         id: 5,
-        url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=75&output=webp&il&w=1200',
         category: 'Интерьеры',
         title: 'Мастер-спальня'
     },
     {
         id: 6,
-        url: 'https://images.unsplash.com/photo-1551524164-687a55dd1126?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1551524164-687a55dd1126?q=75&output=webp&il&w=1200',
         category: 'Детали',
         title: 'Фурнитура'
     },
     {
         id: 7,
-        url: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=75&output=webp&il&w=1200',
         category: 'Детали',
         title: 'Мраморная отделка'
     },
     {
         id: 8,
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200',
+        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=75&output=webp&il&w=1200',
         category: 'Архитектура',
         title: 'Вид из окна'
     }

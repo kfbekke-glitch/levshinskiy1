@@ -72,7 +72,7 @@ export const LobbySection: React.FC = () => {
               Заменить на реальный рендер/фото лобби!
             */}
                         <img
-                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1600&auto=format&fit=crop"
+                            src="https://wsrv.nl/?url=https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=75&w=1200&output=webp&il&fit=crop"
                             alt="Лобби клубного дома Левшинский 19"
                             className="w-full h-full object-cover"
                             loading="lazy"
