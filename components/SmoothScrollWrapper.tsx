@@ -1,32 +1,41 @@
-import React, { useEffect, ReactNode } from 'react';
-// We are assuming ReactLenis is available or we implement a basic version. 
-// For this environment, we'll try to use a standard smooth scroll behavior if package missing
-// But per prompt request, we structure it for Lenis.
+import React, { useEffect } from 'react';
+import Lenis from 'lenis';
 
-/* 
- * NOTE: In a real environment, you would import { ReactLenis } from '@studio-freight/react-lenis'
- * Since we are generating code that might run without npm install, 
- * we will provide a safe implementation that uses native smooth scroll if Lenis is not present,
- * but the structure is here.
+/**
+ * SmoothScrollWrapper
+ * 
+ * Обертка для реализации плавного инерционного скролла через библиотеку Lenis.
+ * Создает эффект "премиального" тяжелого скролла.
  */
 
-// Mock implementation if library is missing
-const LenisWrapper = ({ children }: { children?: ReactNode }) => {
+export const SmoothScrollWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
-    // Add smooth scrolling to html
-    document.documentElement.style.scrollBehavior = 'smooth';
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    // Интеграция с requestAnimationFrame
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
+      lenis.destroy();
     };
   }, []);
 
-  return <>{children}</>;
-};
-
-export const SmoothScrollWrapper: React.FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <LenisWrapper>
+    <div className="w-full h-full">
       {children}
-    </LenisWrapper>
+    </div>
   );
 };
