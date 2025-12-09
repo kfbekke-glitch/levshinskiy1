@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutGroup, motion, AnimatePresence } from 'framer-motion';
-import { NavigationBar } from './components/NavigationBar';
+import { NavigationBar } from './components/AppNavigation';
 import { HeroSection } from './components/HeroSection';
 import { IntroductionBlock } from './components/IntroductionBlock';
 import { ArchitectureSection } from './components/ArchitectureSection';
