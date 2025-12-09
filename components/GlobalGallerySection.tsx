@@ -104,8 +104,8 @@ export const GlobalGallerySection: React.FC = () => {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-6 py-2 rounded-full font-inter text-xs uppercase tracking-wider transition-all duration-300 border ${activeCategory === cat
-                                        ? 'bg-oldBronze border-oldBronze text-white'
-                                        : 'bg-transparent border-white/20 text-white/60 hover:border-white/50 hover:text-white'
+                                    ? 'bg-oldBronze border-oldBronze text-white'
+                                    : 'bg-transparent border-white/20 text-white/60 hover:border-white/50 hover:text-white'
                                     }`}
                             >
                                 {cat}

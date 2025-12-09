@@ -66,7 +66,7 @@ export const LobbySection: React.FC = () => {
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mb-16 md:mb-24"
                 >
-                    <div className="relative aspect-[21/9] overflow-hidden">
+                    <div className="relative aspect-[4/3] md:aspect-[21/9] overflow-hidden">
                         {/* 
               ВАЖНО: Placeholder изображение. 
               Заменить на реальный рендер/фото лобби!
