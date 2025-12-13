@@ -27,7 +27,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                     className="flex flex-col items-center"
                 >
                     <span className="font-cormorant text-4xl md:text-6xl text-limestone tracking-widest uppercase mb-2">
-                        Levshinsky 19
+                        Levshinsky <span className="relative -top-3 md:-top-4">19</span>
                     </span>
                     <span className="font-inter text-xs md:text-sm text-oldBronze uppercase tracking-[0.4em]">
                         Club House

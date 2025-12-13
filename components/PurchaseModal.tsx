@@ -132,7 +132,10 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, type, onCl
                         </div>
 
                         {/* Scrollable Body */}
-                        <div className="p-8 md:p-10 overflow-y-auto custom-scrollbar">
+                        <div
+                            className="p-8 md:p-10 overflow-y-auto custom-scrollbar"
+                            data-lenis-prevent
+                        >
 
                             {/* Description */}
                             <p className="font-inter text-limestone/80 leading-relaxed mb-8">

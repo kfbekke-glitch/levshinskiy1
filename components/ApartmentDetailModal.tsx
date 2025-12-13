@@ -110,7 +110,10 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({ apar
             </div>
 
             {/* Right Column: Info (40% width on desktop) */}
-            <div className="w-full md:w-[40%] h-[60vh] md:h-full overflow-y-auto custom-scrollbar bg-limestone text-charcoalOak">
+            <div
+              className="w-full md:w-[40%] h-[60vh] md:h-full overflow-y-auto custom-scrollbar bg-limestone text-charcoalOak"
+              data-lenis-prevent
+            >
               <div className="p-6 md:p-10 space-y-8">
 
                 {/* Header info */}
@@ -120,8 +123,8 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({ apar
                       {apartment.rooms}-комнатная резиденция
                     </span>
                     <span className={`px-3 py-1 text-[10px] uppercase tracking-wider border ${apartment.status === 'available'
-                        ? 'border-deepMoss text-deepMoss bg-deepMoss/10'
-                        : 'border-oldBronze text-oldBronze bg-oldBronze/10'
+                      ? 'border-deepMoss text-deepMoss bg-deepMoss/10'
+                      : 'border-oldBronze text-oldBronze bg-oldBronze/10'
                       }`}>
                       {apartment.status === 'available' ? 'Свободна' : apartment.status === 'booked' ? 'Бронь' : 'Продана'}
                     </span>
@@ -174,8 +177,8 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({ apar
                     <button
                       onClick={() => setActiveFinishing('turnkey')}
                       className={`flex-1 py-2 text-xs uppercase tracking-wider rounded-full transition-all ${activeFinishing === 'turnkey'
-                          ? 'bg-oldBronze text-white shadow-md'
-                          : 'text-charcoalOak/60 hover:text-charcoalOak'
+                        ? 'bg-oldBronze text-white shadow-md'
+                        : 'text-charcoalOak/60 hover:text-charcoalOak'
                         }`}
                     >
                       Turnkey
@@ -183,8 +186,8 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({ apar
                     <button
                       onClick={() => setActiveFinishing('white-box')}
                       className={`flex-1 py-2 text-xs uppercase tracking-wider rounded-full transition-all ${activeFinishing === 'white-box'
-                          ? 'bg-oldBronze text-white shadow-md'
-                          : 'text-charcoalOak/60 hover:text-charcoalOak'
+                        ? 'bg-oldBronze text-white shadow-md'
+                        : 'text-charcoalOak/60 hover:text-charcoalOak'
                         }`}
                     >
                       White Box
@@ -221,7 +224,45 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({ apar
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  <button className="w-full py-4 border border-charcoalOak/20 hover:border-charcoalOak text-charcoalOak transition-colors font-inter text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3">
+                  <button
+                    onClick={async () => {
+                      try {
+                        const { jsPDF } = await import('jspdf');
+                        const doc = new jsPDF();
+
+                        // Using a base64 encoded font that supports Cyrillic (restricted set to keep size manageable)
+                        // Ideally we fetch a hosted .ttf, but for demo stability we'll try to fetch a known font.
+                        // Let's use a public CDN for Roboto Regular
+                        const fontUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf';
+                        const fontBytes = await fetch(fontUrl).then(res => res.arrayBuffer());
+
+                        // Convert ArrayBuffer to Base64 (browser safe)
+                        const binaryString = Array.from(new Uint8Array(fontBytes))
+                          .map(byte => String.fromCharCode(byte))
+                          .join('');
+                        const base64Font = btoa(binaryString);
+
+                        // Add font to VFS
+                        doc.addFileToVFS('Roboto-Regular.ttf', base64Font);
+                        doc.addFont('Roboto-Regular.ttf', 'Roboto', 'normal');
+                        doc.setFont('Roboto');
+
+                        doc.setFontSize(22);
+                        doc.text('Ваши данные', 20, 30);
+
+                        /* Optional: Add more apartment info since we are here
+                        doc.setFontSize(14);
+                        doc.text(`Апартамент № ${apartment.number}`, 20, 50);
+                        doc.text(`Цена: ${apartment.totalPrice}`, 20, 60);
+                        */
+
+                        doc.save(`presentation_apt_${apartment.number}.pdf`);
+                      } catch (e) {
+                        console.error("PDF Generation Error:", e);
+                        alert("Не удалось создать PDF. Попробуйте позже.");
+                      }
+                    }}
+                    className="w-full py-4 border border-charcoalOak/20 hover:border-charcoalOak text-charcoalOak transition-colors font-inter text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3">
                     <Download size={16} />
                     Скачать презентацию PDF
                   </button>

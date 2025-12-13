@@ -8,7 +8,7 @@ import { YMaps, Map, Placemark, ZoomControl } from '@pbe/react-yandex-maps';
  */
 
 // Координаты центра (Левшинский 19)
-const HOME_COORDS = [55.741469, 37.591671];
+const HOME_COORDS = [55.741445, 37.586122];
 
 // Категории достопримечательностей и мест с координатами
 const locationCategories = [
@@ -130,6 +130,7 @@ export const LocationSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full h-[400px] lg:h-[500px] overflow-hidden mb-8 rounded-sm border border-oldBronze/20 bg-charcoalOak/50"
+              data-lenis-prevent
             >
               <YMaps query={{ lang: 'ru_RU', load: 'package.full' }}>
                 <div style={{ width: '100%', height: '100%' }}>

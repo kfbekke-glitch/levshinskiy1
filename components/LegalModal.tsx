@@ -52,7 +52,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type })
                         </div>
 
                         {/* Scrollable Content */}
-                        <div className="p-8 overflow-y-auto font-serif text-sm text-charcoalOak/80 leading-relaxed space-y-8 custom-scrollbar">
+                        <div
+                            className="p-8 overflow-y-auto font-serif text-sm text-charcoalOak/80 leading-relaxed space-y-8 custom-scrollbar"
+                            data-lenis-prevent
+                        >
 
                             {isPrivacy ? (
                                 // PRIVACY POLICY (EXTENDED)

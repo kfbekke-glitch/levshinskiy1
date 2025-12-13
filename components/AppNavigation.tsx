@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LayoutDashboard, X, Menu, Phone } from 'lucide-react';
+import { X, Menu, Phone } from 'lucide-react';
 
 /**
  * NavigationBar — Улучшенная навигация
@@ -16,6 +16,7 @@ interface NavigationBarProps {
 const menuItems = [
   { label: 'О проекте', href: '#introduction' },
   { label: 'Архитектура', href: '#architecture' },
+  { label: 'О застройщике', href: '#developer' },
   { label: 'Привилегии', href: '#amenities' },
   { label: 'Расположение', href: '#location' },
   { label: 'Квартиры', href: '#apartments' },
@@ -72,7 +73,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isManagerMode, tog
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="font-cormorant text-xl md:text-2xl tracking-wide font-medium text-white hover:text-oldBronze transition-colors"
           >
-            LEVSHINSKY 19
+            LEVSHINSKY <span className="relative -top-1.5">19</span>
           </a>
         </div>
 
@@ -147,6 +148,22 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ isManagerMode, tog
               >
                 <Phone size={18} />
                 <span className="font-inter text-sm">+7 (980) 547-04-06</span>
+              </a>
+
+              {/* Telegram */}
+              <a
+                href="https://t.me/nazzgulenok"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-[#2AABEE] hover:text-[#2AABEE]/80 transition-colors"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 fill-current"
+                >
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+                <span className="font-inter text-sm">@nazzgulenok</span>
               </a>
 
               {/* Кнопка "Связаться" */}

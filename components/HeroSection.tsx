@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
               }}
               className="font-cormorant text-5xl sm:text-6xl md:text-8xl font-light text-white tracking-[0.1em] md:tracking-[0.2em] leading-none uppercase"
             >
-              Levshinsky 19
+              Levshinsky <span className="relative -top-4 md:-top-6">19</span>
             </motion.h1>
           </div>
 

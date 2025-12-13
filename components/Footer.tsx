@@ -11,6 +11,7 @@ interface FooterProps {
 const menuLinks = [
   { label: 'О проекте', href: '#introduction' },
   { label: 'Архитектура', href: '#architecture' },
+  { label: 'О застройщике', href: '#developer' },
   { label: 'Квартиры', href: '#apartments' },
   { label: 'Расположение', href: '#location' },
   { label: 'Покупка', href: '#purchase' },

@@ -1,9 +1,46 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Clock, BookOpen, Crown, Palette } from 'lucide-react';
+
+/**
+ * IntroductionBlock — Расширенная секция "Место, где история обретает форму"
+ * 
+ * Включает:
+ * - Основной текст о месте
+ * - Историю Большого Левшинского переулка
+ * - Таймлайн реставрации
+ * - Цитату архитектора
+ */
+
+// Исторические факты о месте
+const historyFacts = [
+  {
+    year: '1812',
+    title: 'Послепожарная Москва',
+    description: 'Большой Левшинский переулок получает свое имя. Здесь возводятся первые каменные особняки московской аристократии.'
+  },
+  {
+    year: '1890-е',
+    title: 'Золотой век',
+    description: 'Переулок становится центром литературной жизни. Здесь бывают Чехов, Толстой, именитые художники и меценаты.'
+  },
+  {
+    year: '1910',
+    title: 'Рождение дома',
+    description: 'Возводится здание в стиле неоклассицизма. Заказчик — купеческая семья, мечтавшая о "тихом уголке в центре".'
+  },
+  {
+    year: '2023–2025',
+    title: 'Реставрация',
+    description: 'Бережная реконструкция с сохранением исторического фасада и модернизацией инженерных систем до уровня XXI века.'
+  }
+];
 
 export const IntroductionBlock: React.FC = () => {
   const containerRef = useRef(null);
+  const historyRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: '-20%' });
+  const isHistoryInView = useInView(historyRef, { once: true, margin: '-10%' });
 
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -15,11 +52,12 @@ export const IntroductionBlock: React.FC = () => {
   };
 
   return (
-    <section id="introduction" className="relative bg-[#F5F2EB] py-16 md:py-24 overflow-hidden">
+    <section id="introduction" className="relative bg-[#F5F2EB] overflow-hidden">
 
+      {/* ======= ЧАСТЬ 1: Основной блок (оригинальный) ======= */}
       <div
         ref={containerRef}
-        className="container mx-auto px-6 md:px-12 lg:px-24"
+        className="container mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-24"
       >
         {/* Strict 2-Column Grid with Top Alignment */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-start">
@@ -125,6 +163,107 @@ export const IntroductionBlock: React.FC = () => {
 
         </div>
       </div>
+
+      {/* ======= ЧАСТЬ 2: История Места (НОВОЕ) ======= */}
+      <div
+        ref={historyRef}
+        className="relative bg-charcoalOak py-20 md:py-28"
+      >
+        {/* Декоративная текстура */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        />
+
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+
+          {/* Заголовок секции */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isHistoryInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-16 md:mb-20"
+          >
+            <span className="font-inter text-xs text-oldBronze uppercase tracking-[0.3em] block mb-6">
+              Наследие
+            </span>
+            <h3 className="font-cormorant text-4xl md:text-5xl lg:text-6xl text-limestone font-light">
+              История <span className="italic text-oldBronze">места</span>
+            </h3>
+            <p className="font-inter text-limestone/60 text-lg mt-6 max-w-2xl leading-relaxed">
+              Большой Левшинский переулок — одна из старейших улиц Хамовников.
+              Здесь каждый дом хранит память о великих событиях и выдающихся людях.
+            </p>
+          </motion.div>
+
+          {/* Timeline / Исторические факты */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+            {historyFacts.map((fact, index) => (
+              <motion.div
+                key={fact.year}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isHistoryInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.15,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="group relative"
+              >
+                {/* Год */}
+                <div className="mb-6">
+                  <span className="font-cormorant text-5xl md:text-6xl text-oldBronze/30 font-light group-hover:text-oldBronze transition-colors duration-500">
+                    {fact.year}
+                  </span>
+                </div>
+
+                {/* Линия-разделитель */}
+                <div className="h-px bg-limestone/20 mb-6 relative overflow-hidden">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={isHistoryInView ? { scaleX: 1 } : {}}
+                    transition={{ duration: 1, delay: index * 0.15 + 0.5 }}
+                    className="absolute inset-0 bg-oldBronze origin-left"
+                  />
+                </div>
+
+                {/* Контент */}
+                <h4 className="font-cormorant text-2xl text-limestone mb-3 group-hover:text-oldBronze transition-colors duration-300">
+                  {fact.title}
+                </h4>
+                <p className="font-inter text-sm text-limestone/60 leading-relaxed">
+                  {fact.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Декоративные иконки / Характеристики места */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isHistoryInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="mt-20 pt-16 border-t border-limestone/10"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+              {[
+                { icon: Clock, label: '110+ лет', desc: 'история здания' },
+                { icon: BookOpen, label: 'Литературный', desc: 'квартал Москвы' },
+                { icon: Crown, label: 'Элитный', desc: 'район с XIX века' },
+                { icon: Palette, label: '15+ галерей', desc: 'в шаговой доступности' }
+              ].map((item, idx) => (
+                <div key={idx} className="text-center md:text-left">
+                  <item.icon className="w-8 h-8 text-oldBronze mx-auto md:mx-0 mb-4" strokeWidth={1} />
+                  <p className="font-cormorant text-2xl text-limestone mb-1">{item.label}</p>
+                  <p className="font-inter text-xs text-limestone/50 uppercase tracking-wider">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+
     </section>
   );
 };

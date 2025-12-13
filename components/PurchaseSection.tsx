@@ -237,10 +237,15 @@ export const PurchaseSection: React.FC = () => {
                                 Наш менеджер подберёт оптимальную ипотечную программу
                                 и поможет с оформлением документов.
                             </p>
-                            <button className="flex items-center gap-3 px-8 py-4 bg-oldBronze text-charcoalOak font-inter text-xs uppercase tracking-wider font-medium hover:bg-creamyLatte transition-colors">
+                            <a
+                                href="https://wa.me/79805470406?text=Здравствуйте!%20Хочу%20получить%20консультацию%20по%20ипотеке"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-8 py-4 bg-oldBronze text-charcoalOak font-inter text-xs uppercase tracking-wider font-medium hover:bg-creamyLatte transition-colors"
+                            >
                                 <Phone size={16} />
                                 Заказать звонок
-                            </button>
+                            </a>
                         </div>
                     </motion.div>
                 </div>
